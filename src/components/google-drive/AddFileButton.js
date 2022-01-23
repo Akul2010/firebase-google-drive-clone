@@ -24,7 +24,7 @@ export default function AddFileButton({ currentFolder }) {
     const filePath =
       currentFolder === ROOT_FOLDER
         ? `${currentFolder.path.join("/")}/${file.name}`
-        : `${currentFolder.path.join("/")}/${currentFolder.name}/${file.name}`
+        : `${currentFolder.path.map(f => f.name).join("/")}/${currentFolder.name}/${file.name}`
 
     const uploadTask = storage
       .ref(`/files/${currentUser.uid}/${filePath}`)
